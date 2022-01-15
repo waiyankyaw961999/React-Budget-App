@@ -57,8 +57,8 @@ function App() {
           );
           return (
             <BudgetCard
-              hideButtons={false}
               key={budget.id}
+              hideButtons={false}
               name={budget.name}
               amount={amount}
               max={budget.max}
@@ -84,11 +84,9 @@ function App() {
         show={showAddExpenseModal}
         defaultBudgetId={addExpenseModalBudgetId}
         handleClose={() => setShowAddExpenseModal(false)}
-        budgetId
       />
 
       <ViewExpensesModal
-        show={viewExpenseModalBudgetId}
         budgetId={viewExpenseModalBudgetId}
         handleClose={() => {
           setViewExpenseModalBudgetId();

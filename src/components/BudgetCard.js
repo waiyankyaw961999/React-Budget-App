@@ -37,6 +37,7 @@ export default function BudgetCard({
           max={max}
           now={amount}
         />
+
         {!hideButtons && (
           <Stack
             direction="horizontal"
