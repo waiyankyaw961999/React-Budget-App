@@ -17,6 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "format": "prettier --log-level warn --write .",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
