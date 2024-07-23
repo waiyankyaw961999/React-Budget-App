@@ -53,7 +53,7 @@ function App() {
         {budgets.map((budget) => {
           const amount = getBudgetExpenses(budget.id).reduce(
             (total, expense) => total + parseInt(expense.amount),
-            0
+            0,
           );
           return (
             <BudgetCard

@@ -1,15 +1,14 @@
-name: 'React.js CI/CD'
-on: 
-  
-  push: 
-    branches: ['main']
-  pull_request: 
-    branches: ['main']
-  
+name: "React.js CI/CD"
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
 jobs:
   build:
     runs-on: ubuntu-latest
-  
+
     steps:
       - name: Chekout code
         uses: actions/checkout@v2
@@ -17,28 +16,26 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install dependencies
         run: npm install
-
 
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
           eslint: true
           prettier: true
-      
+
       - name: Build app
         run: npm run build
 
       - name: Upload to S3
         uses: jakejarvis/s3-sync-action@master
-        with: 
+        with:
           args: --acl public-read
-        env: 
+        env:
           SOURCE_DIR: build/
           AWS_S3_BUCKET: ${{secrets.AWS_S3_BUCKET}}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        
